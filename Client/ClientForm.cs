@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,11 +11,10 @@ namespace Client
     {
         Socket Server = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
         byte[] byteData;
-        int BUFFER_SIZE = 2048;
         public Client_Form()
         {
             InitializeComponent();
-            label1.Text = "try 0";
+            
           
             ConnectToServer();
             Server.BeginReceive(byteData, 0, byteData.Length, SocketFlags.None, new AsyncCallback(Receive_Callback), Server);
@@ -38,12 +32,9 @@ namespace Client
         {
             try
             {
-                //BeginInvoke(new MethodInvoker(() => label1.Text = "try 1"));
-             
+              
                 Server.EndConnect(ar);
-
                 
-                //BeginInvoke(new MethodInvoker(() => label1.Text = "try 2"));
                 byte[] buffer = Encoding.ASCII.GetBytes("im new client");
                 Server.BeginSend(buffer, 0, buffer.Length, SocketFlags.None, new AsyncCallback(Send_Callback), Server);
               
@@ -65,7 +56,7 @@ namespace Client
                 recBuffer = new byte[receivedSize];
                 Array.Copy(byteData, recBuffer, receivedSize);
                 text = Encoding.ASCII.GetString(recBuffer);
-                this.BeginInvoke(new MethodInvoker(() => { label1.Text = text + "\n"; }));
+                this.BeginInvoke(new MethodInvoker(() => {txtRecieved.Text = text + "\n"; }));
                Server.BeginReceive(byteData, 0, byteData.Length, SocketFlags.None, Receive_Callback, Server);
             }
             catch (SocketException ex)
@@ -76,11 +67,7 @@ namespace Client
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            byte[] buffer = Encoding.ASCII.GetBytes(textBox1.Text);
-            Server.BeginSend(buffer, 0, buffer.Length, SocketFlags.None, new AsyncCallback(Send_Callback), Server);
-        }
+      
 
         public void Send_Callback(IAsyncResult ar)
         {
@@ -93,6 +80,12 @@ namespace Client
             {
                 MessageBox.Show("Client Error: ",ex.Message);
             }
+        }
+
+        private void btnSend_Click(object sender, EventArgs e)
+        {
+            byte[] buffer = Encoding.ASCII.GetBytes(txtSend.Text);
+            Server.BeginSend(buffer, 0, buffer.Length, SocketFlags.None, new AsyncCallback(Send_Callback), Server);
         }
     }
 }
