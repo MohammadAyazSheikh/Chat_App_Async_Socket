@@ -1,1 +1,9 @@
 C:\Users\moham\Desktop\NP\Chat_App_AsyncSocket\Server\bin\Debug\Server.exe.config
+C:\Users\moham\Desktop\NP\Chat_App_AsyncSocket\Server\bin\Debug\Server.exe
+C:\Users\moham\Desktop\NP\Chat_App_AsyncSocket\Server\bin\Debug\Server.pdb
+C:\Users\moham\Desktop\NP\Chat_App_AsyncSocket\Server\obj\Debug\Server.csprojResolveAssemblyReference.cache
+C:\Users\moham\Desktop\NP\Chat_App_AsyncSocket\Server\obj\Debug\Server.Server_Form.resources
+C:\Users\moham\Desktop\NP\Chat_App_AsyncSocket\Server\obj\Debug\Server.Properties.Resources.resources
+C:\Users\moham\Desktop\NP\Chat_App_AsyncSocket\Server\obj\Debug\Server.csproj.GenerateResource.Cache
+C:\Users\moham\Desktop\NP\Chat_App_AsyncSocket\Server\obj\Debug\Server.exe
+C:\Users\moham\Desktop\NP\Chat_App_AsyncSocket\Server\obj\Debug\Server.pdb
